@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('run-script') {
             steps {
-                sh 'echo "Fail!"; exit 1'
+                sh './resources/azurevm.sh'
             }
         }
     }
