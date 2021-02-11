@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('run-script') {
             steps {
-                sh './resources/azurevm.sh'
+                sh './resources/createvm.sh'
             }
         }
     }
