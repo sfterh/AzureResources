@@ -1,10 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
-            steps {
-                az login --service-principal --username '6976ba2d-f77b-46bf-9ca9-05f24d34a0f1' --password 'v-PZuWu9~.y8x8gM7JDDbJc~AMKs11fI.d' --tenant 'b7f604a0-00a9-4188-9248-42f3a5aac2e9'
-                az network vnet create -g rg-west-prod-IAUCDR -n jenkinsVNET
+        stage('Deploy') {
+        withCredentials([azureServicePrincipal('0cec1713-b8dd-4e80-ae85-db9285a02a79')]) {
+            sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+            sh 'az network vnet create -g rg-west-prod-IAUCDR -n jenkinsVNET'
             }
         }
     }
