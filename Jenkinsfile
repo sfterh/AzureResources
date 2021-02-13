@@ -10,7 +10,7 @@ pipeline {
                 }
                 stage('Deploy') {
                     steps{
-                        bat 'Get-AzResourceGroup -Name rg-east-Prod-IAUCDR'
+                        echo 'hello'
                     }                    
                 }
             }
