@@ -17,18 +17,7 @@ pipeline {
                     steps{
                         bat './resources/testing2.bat'
                     }
-                }   
-                stage('Stage 3'){                   
-                    steps{
-                        withCredentials([azureServicePrincipal('0cec1713-b8dd-4e80-ae85-db9285a02a79')]){
-                            echo "My client id is $AZURE_CLIENT_ID"
-                            echo "My client secret is $AZURE_CLIENT_SECRET"
-                            echo "My tenant id is $AZURE_TENANT_ID"
-                            echo "My subscription id is $AZURE_SUBSCRIPTION_ID"
-                            bat 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
-                        }
-                    }
-                }   
+                }
             }
         }
     }
