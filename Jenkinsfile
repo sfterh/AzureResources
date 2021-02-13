@@ -9,17 +9,11 @@ pipeline {
         stage('Parallel Stage'){
             parallel{
                 stage('Stage 1'){
-                    agent{
-                        label "label for stage 1"
-                    }
                     steps{
                         bat './resources/testing1.bat'
                     }
                 }
-                stage('Stage 2'){
-                    agent{
-                        label "label for stage 2"
-                    }
+                stage('Stage 2'){                   
                     steps{
                         bat './resources/testing2.bat'
                     }
