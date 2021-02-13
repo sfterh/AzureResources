@@ -5,7 +5,7 @@ pipeline {
             parallel {
                 stage('Create VNET'){
                     steps{
-                        bat './resources/createvnet.bat'                
+                        bat './resources/testing1.bat'                
                     }
                 }
                 stage('Deploy') {
