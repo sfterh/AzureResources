@@ -10,7 +10,7 @@ pipeline {
                 }
                 stage('Deploy') {
                     steps{
-                        echo 'hello'
+                        bat './resources/testing2.bat'
                     }                    
                 }
             }
