@@ -1,15 +1,30 @@
 pipeline {
     agent any
     stages{
-        stage('Create VNET'){
+        stage('Sequential Stage'){
             steps{
-                bat './resources/testing1.bat'                
+                echo 'This is a sequential stage';
             }
         }
-        stage('Deploy') {
-            steps{
-                bat './resources/testing2.bat'
-            }                    
+        stage('Parallel Stage'){
+            parallel{
+                stage('Stage 1'){
+                    agent{
+                        label "label for stage 1"
+                    }
+                    steps{
+                        bat './resources/testing1.bat'
+                    }
+                }
+                stage('Stage 2'){
+                    agent{
+                        label "label for stage 2"
+                    }
+                    steps{
+                        bat './resources/testing2.bat'
+                    }
+                }                
+            }
         }
     }
 }
