@@ -8,7 +8,7 @@ pipeline {
         }
          stage('Deploy') {
             steps{
-                bat './resources/createvnet.bat'                
+                Get-AzResourceGroup -Name "abs-subscription-dev"
             }
         }
     }
