@@ -1,15 +1,17 @@
 pipeline {
     agent any
-    stages {       
-        stage('Planning') {
-            steps{
-                bat './resources/createvnet.bat'                
+    stages {
+         parallel {
+            stage('Planning') {
+                steps{
+                    bat './resources/createvnet.bat'                
+                }
             }
-        }
-         stage('Deploy') {
-            steps{
-                Get-AzResourceGroup -Name "abs-subscription-dev"
+             stage('Deploy') {
+                steps{
+                    Get-AzResourceGroup -Name "abs-subscription-dev"
+                }
             }
-        }
+         }
     }
 }
